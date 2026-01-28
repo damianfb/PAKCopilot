@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle Paciente - PAK TRASLADOS</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span>🚐</span>
+        <span>PAK TRASLADOS</span>
+      </div>
+      <nav>
+        <ul class="sidebar-nav">
+          <li>
+            <a href="index.html">
+              <span class="nav-icon">📊</span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="pacientes.html" class="active">
+              <span class="nav-icon">👥</span>
+              <span>Pacientes</span>
+            </a>
+          </li>
+          <li>
+            <a href="liquidacion.html">
+              <span class="nav-icon">💰</span>
+              <span>Liquidación</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="nav-icon">⚙️</span>
+              <span>Configuración</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-content">
+          <h1 class="header-title">Detalle del Paciente</h1>
+          <div class="header-actions">
+            <a href="pacientes.html" class="btn btn-secondary">
+              ← Volver
+            </a>
+            <a href="paciente-nuevo.html" class="btn btn-primary">
+              ✏️ Editar
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="content">
+        <!-- Patient Header -->
+        <div class="patient-header">
+          <div class="patient-header-content">
+            <div class="patient-header-left">
+              <div class="text-sm" style="opacity: 0.9;">Carpeta #2567</div>
+              <h1>CONSALVO ANTONINI, ABEL</h1>
+              <div class="patient-badges">
+                <span class="badge badge-success">Activo</span>
+                <span class="badge badge-warning">Con Dependencia</span>
+              </div>
+            </div>
+            <div class="patient-header-right">
+              <div class="text-right">
+                <div class="text-sm" style="opacity: 0.9;">Liquidación Enero 2025</div>
+                <div class="text-xl" style="font-weight: 700; margin-top: 8px;">$1,247,345.35</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Patient Information Grid -->
+        <div class="info-grid">
+          <!-- Personal Information -->
+          <div class="info-section">
+            <h3>Datos Personales</h3>
+            <div class="info-row">
+              <span class="info-label">DNI</span>
+              <span class="info-value">45.123.789</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Teléfono</span>
+              <span class="info-value">351-456-7890</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Responsable</span>
+              <span class="info-value">María Antonini (Madre)</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Domicilio</span>
+              <span class="info-value">Av. Colón 1234, Córdoba</span>
+            </div>
+          </div>
+
+          <!-- Coverage Information -->
+          <div class="info-section">
+            <h3>Cobertura</h3>
+            <div class="info-row">
+              <span class="info-label">Obra Social</span>
+              <span class="info-value">OSECAC</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">N° Afiliado</span>
+              <span class="info-value">12345678-9</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Dependencia</span>
+              <span class="info-value">
+                <span class="badge badge-warning">Con Dependencia</span>
+              </span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Valor KM</span>
+              <span class="info-value" style="color: var(--primary); font-size: 16px;">$833.79</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Traslados Cards -->
+        <h2 class="mb-lg">Traslados Configurados</h2>
+        <div class="traslados-grid">
+          <!-- Traslado 1 -->
+          <div class="traslado-card">
+            <div class="traslado-header">
+              <div class="traslado-type">🏫 Escuela</div>
+              <div class="traslado-destination">Escuela Especial Dr. Ramón Carrillo</div>
+              <div class="text-sm mt-sm" style="opacity: 0.9;">Av. Vélez Sarsfield 2456, Córdoba</div>
+            </div>
+            <div class="traslado-body">
+              <div class="traslado-stats">
+                <div class="traslado-stat">
+                  <div class="traslado-stat-value">22.4</div>
+                  <div class="traslado-stat-label">KM por viaje</div>
+                </div>
+                <div class="traslado-stat">
+                  <div class="traslado-stat-value">5</div>
+                  <div class="traslado-stat-label">Días semana</div>
+                </div>
+                <div class="traslado-stat">
+                  <div class="traslado-stat-value">20</div>
+                  <div class="traslado-stat-label">Asistencias</div>
+                </div>
+                <div class="traslado-stat">
+                  <div class="traslado-stat-value">896.00</div>
+                  <div class="traslado-stat-label">KM totales mes</div>
+                </div>
+              </div>
+              <div class="mt-md text-sm text-muted">
+                <strong>Días:</strong> Lunes a Viernes | <strong>Código AD:</strong> ESC-001
+              </div>
+              <div class="traslado-amount mt-lg">
+                <div class="traslado-amount-label">Monto calculado</div>
+                <div class="traslado-amount-value">$747,036.00</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Traslado 2 -->
+          <div class="traslado-card">
+            <div class="traslado-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+              <div class="traslado-type">🏥 Centro Terapéutico</div>
+              <div class="traslado-destination">Centro de Rehabilitación Integral</div>
+              <div class="text-sm mt-sm" style="opacity: 0.9;">Av. Recta Martinolli 8234, Córdoba</div>
+            </div>
+            <div class="traslado-body">
+              <div class="traslado-stats">
+                <div class="traslado-stat">
+                  <div class="traslado-stat-value">15.0</div>
+                  <div class="traslado-stat-label">KM por viaje</div>
+                </div>
+                <div class="traslado-stat">
+                  <div class="traslado-stat-value">3</div>
+                  <div class="traslado-stat-label">Días semana</div>
+                </div>
+                <div class="traslado-stat">
+                  <div class="traslado-stat-value">12</div>
+                  <div class="traslado-stat-label">Asistencias</div>
+                </div>
+                <div class="traslado-stat">
+                  <div class="traslado-stat-value">600.00</div>
+                  <div class="traslado-stat-label">KM totales mes</div>
+                </div>
+              </div>
+              <div class="mt-md text-sm text-muted">
+                <strong>Días:</strong> Martes, Jueves, Sábado | <strong>Código AD:</strong> TER-045
+              </div>
+              <div class="traslado-amount mt-lg">
+                <div class="traslado-amount-label">Monto calculado</div>
+                <div class="traslado-amount-value">$500,309.35</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section">
+          <h3>Resumen de Liquidación - Enero 2025</h3>
+          <div class="summary-grid">
+            <div class="summary-item">
+              <div class="summary-label">KM Totales</div>
+              <div class="summary-value">1,496.00</div>
+            </div>
+            <div class="summary-item">
+              <div class="summary-label">Valor KM</div>
+              <div class="summary-value">$833.79</div>
+            </div>
+            <div class="summary-item">
+              <div class="summary-label">Total a Liquidar</div>
+              <div class="summary-value">$1,247,345.35</div>
+            </div>
+          </div>
+          <div class="mt-lg text-center text-sm" style="opacity: 0.9;">
+            Cálculo según Resolución 2/2025 | Valores con dependencia
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
