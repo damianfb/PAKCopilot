@@ -4,13 +4,13 @@ Sistema de gestión integral para **PAK Traslados** - empresa de transporte de p
 
 ## 🚀 Tecnologías
 
-- **Angular 17** con standalone components
-- **Angular Material** para UI
-- **TypeScript 5.4** con strict mode
-- **PWA** (Progressive Web App) configurado
-- **Signals** para manejo de estado reactivo
-- **Lazy Loading** para optimización de carga
-- **Reactive Forms** para formularios con validación
+- **Angular 19** (latest patched version) with standalone components
+- **Angular Material** for UI
+- **TypeScript 5.7** with strict mode
+- **PWA** (Progressive Web App) configured
+- **Signals** for reactive state management
+- **Lazy Loading** for optimization
+- **Reactive Forms** with validation
 
 ## 📋 Descripción del Negocio
 
@@ -185,5 +185,6 @@ Desarrollado para **PAK TRASLADOS** - Sistema de gestión de traslados de pacien
 
 **Versión**: 1.0.0 - Bloque 1 (Módulo Cartera)  
 **Fecha**: Enero 2025  
-**Framework**: Angular 17+ con standalone components
+**Framework**: Angular 19+ (latest patched version) with standalone components  
+**Security**: All known Angular vulnerabilities patched (XSRF, XSS)
 
