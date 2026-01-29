@@ -198,7 +198,17 @@ export class CarteraFormComponent implements OnInit {
   onSubmit(): void {
     if (this.pacienteForm.valid) {
       const formValue = this.pacienteForm.value;
-      const obraSocial = this.obrasSociales.find(os => os.codigo === formValue.obraSocialCodigo)!;
+      const obraSocial = this.obrasSociales.find(os => os.codigo === formValue.obraSocialCodigo);
+      
+      if (!obraSocial) {
+        console.error('Obra social no encontrada');
+        return;
+      }
+
+      // Preserve existing servicios when editing
+      const existingPaciente = this.isEditMode() && this.pacienteId() 
+        ? this.carteraService.getPacienteById(this.pacienteId()!)
+        : null;
 
       const paciente: Paciente = {
         id: this.pacienteId() || 0,
@@ -210,7 +220,7 @@ export class CarteraFormComponent implements OnInit {
         dependencia: formValue.dependencia,
         responsable: formValue.responsable,
         domicilioParticular: formValue.domicilioParticular,
-        servicios: []
+        servicios: existingPaciente?.servicios || []
       };
 
       if (this.isEditMode()) {
