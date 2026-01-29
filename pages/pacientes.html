@@ -296,7 +296,7 @@
           </div>
           <div class="filter-group">
             <label class="filter-label">Obra Social</label>
-            <select class="form-select" id="filter-obra-social">
+            <select class="form-select" id="filter-obra-social" data-table-filter="pacientes-table" data-filter-column="3">
               <option value="todos">Todas</option>
               <option value="osecac">OSECAC</option>
               <option value="osmata">OSMATA</option>
@@ -311,15 +311,15 @@
           </div>
           <div class="filter-group">
             <label class="filter-label">Dependencia</label>
-            <select class="form-select" id="filter-dependencia">
+            <select class="form-select" id="filter-dependencia" data-table-filter="pacientes-table" data-filter-column="6">
               <option value="todos">Todas</option>
-              <option value="con">Con Dependencia</option>
-              <option value="sin">Sin Dependencia</option>
+              <option value="c/depen">Con Dependencia</option>
+              <option value="s/depen">Sin Dependencia</option>
             </select>
           </div>
           <div class="filter-group">
             <label class="filter-label">Estado</label>
-            <select class="form-select" id="filter-estado">
+            <select class="form-select" id="filter-estado" data-table-filter="pacientes-table" data-filter-column="8">
               <option value="activo">Activo</option>
               <option value="inactivo">Inactivo</option>
               <option value="todos">Todos</option>
@@ -410,10 +410,10 @@
                   <td><span class="badge badge-success">Activo</span></td>
                   <td>
                     <div class="action-buttons">
-                      <button class="btn btn-icon" title="Ver Detalle" onclick="verDetallePaciente(2501)">
+                      <button class="btn btn-icon" title="Ver Detalle" aria-label="Ver detalle del paciente" onclick="verDetallePaciente(2501)">
                         <i class="fas fa-eye"></i>
                       </button>
-                      <button class="btn btn-icon" title="Editar" onclick="editarPaciente(2501)">
+                      <button class="btn btn-icon" title="Editar" aria-label="Editar paciente" onclick="editarPaciente(2501)">
                         <i class="fas fa-edit"></i>
                       </button>
                     </div>
@@ -431,10 +431,10 @@
                   <td><span class="badge badge-success">Activo</span></td>
                   <td>
                     <div class="action-buttons">
-                      <button class="btn btn-icon" title="Ver Detalle" onclick="verDetallePaciente(2507)">
+                      <button class="btn btn-icon" title="Ver Detalle" aria-label="Ver detalle del paciente" onclick="verDetallePaciente(2507)">
                         <i class="fas fa-eye"></i>
                       </button>
-                      <button class="btn btn-icon" title="Editar" onclick="editarPaciente(2507)">
+                      <button class="btn btn-icon" title="Editar" aria-label="Editar paciente" onclick="editarPaciente(2507)">
                         <i class="fas fa-edit"></i>
                       </button>
                     </div>
@@ -452,10 +452,10 @@
                   <td><span class="badge badge-success">Activo</span></td>
                   <td>
                     <div class="action-buttons">
-                      <button class="btn btn-icon" title="Ver Detalle" onclick="verDetallePaciente(2567)">
+                      <button class="btn btn-icon" title="Ver Detalle" aria-label="Ver detalle del paciente" onclick="verDetallePaciente(2567)">
                         <i class="fas fa-eye"></i>
                       </button>
-                      <button class="btn btn-icon" title="Editar" onclick="editarPaciente(2567)">
+                      <button class="btn btn-icon" title="Editar" aria-label="Editar paciente" onclick="editarPaciente(2567)">
                         <i class="fas fa-edit"></i>
                       </button>
                     </div>
@@ -470,11 +470,11 @@
   </div>
 
   <!-- Modal Nuevo/Editar Paciente -->
-  <div class="modal-overlay" id="modal-paciente">
+  <div class="modal-overlay" id="modal-paciente" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal">
       <div class="modal-header">
         <h2 class="modal-title" id="modal-title">Nuevo Paciente</h2>
-        <button class="modal-close" onclick="cerrarModal()">&times;</button>
+        <button class="modal-close" onclick="cerrarModal()" aria-label="Cerrar modal">&times;</button>
       </div>
       <div class="modal-body">
         <form id="form-paciente">
@@ -570,7 +570,7 @@
                   </div>
                   <div class="form-group">
                     <label class="form-label">Km Diario</label>
-                    <input type="number" class="form-input" name="km-diario-1" placeholder="Ej: 28" step="0.1">
+                    <input type="number" class="form-input servicio-km" name="km-diario-1" placeholder="Ej: 28" step="0.1">
                   </div>
                   <div class="form-group">
                     <label class="form-label">Días de Asistencia</label>
@@ -582,7 +582,7 @@
                   </div>
                   <div class="form-group">
                     <label class="form-label">Cantidad de Viajes Mensuales</label>
-                    <input type="number" class="form-input" name="viajes-1" placeholder="Ej: 20" value="20">
+                    <input type="number" class="form-input servicio-viajes" name="viajes-1" placeholder="Ej: 20" value="20">
                   </div>
                 </div>
               </div>
@@ -630,11 +630,11 @@
   </div>
 
   <!-- Modal Detalle Paciente -->
-  <div class="modal-overlay" id="modal-detalle">
+  <div class="modal-overlay" id="modal-detalle" role="dialog" aria-modal="true" aria-labelledby="modal-detalle-title">
     <div class="modal">
       <div class="modal-header">
-        <h2 class="modal-title">Detalle del Paciente</h2>
-        <button class="modal-close" onclick="cerrarModalDetalle()">&times;</button>
+        <h2 class="modal-title" id="modal-detalle-title">Detalle del Paciente</h2>
+        <button class="modal-close" onclick="cerrarModalDetalle()" aria-label="Cerrar modal">&times;</button>
       </div>
       <div class="modal-body" id="detalle-content">
         <!-- El contenido se cargará dinámicamente -->
@@ -748,6 +748,7 @@
       document.getElementById('servicios-container').innerHTML = crearServicioHTML(1);
       pacienteActualId = null;
       document.getElementById('modal-paciente').classList.add('active');
+      agregarEventListenersFacturacion();
       calcularFacturacion();
     });
 
@@ -818,11 +819,16 @@
     }
 
     function agregarEventListenersFacturacion() {
-      // Listener para dependencia
-      document.getElementById('dependencia').addEventListener('change', calcularFacturacion);
+      // Remove existing listener from dependencia to avoid duplicates
+      const dependenciaEl = document.getElementById('dependencia');
+      const oldListener = dependenciaEl.onchange;
+      dependenciaEl.onchange = null;
+      dependenciaEl.addEventListener('change', calcularFacturacion);
       
-      // Listeners para campos de km y viajes
+      // Listeners para campos de km y viajes (solo para nuevos elementos)
       document.querySelectorAll('.servicio-km, .servicio-viajes').forEach(input => {
+        // Remove existing listener if any
+        input.removeEventListener('input', calcularFacturacion);
         input.addEventListener('input', calcularFacturacion);
       });
     }
