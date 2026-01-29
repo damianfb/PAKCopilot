@@ -1,6 +1,16 @@
-# PAK TRASLADOS - Prototipo HTML/CSS
+# PAK Copilot - Sistema de Gestión de Traslados
 
-Prototipo estático completo del sistema de gestión de traslados de pacientes con discapacidad para PAK (Prestador de servicios de transporte sanitario).
+Sistema de gestión integral para **PAK Traslados** - empresa de transporte de pacientes con discapacidad.
+
+## 🚀 Tecnologías
+
+- **Angular 19** (latest patched version) with standalone components
+- **Angular Material** for UI
+- **TypeScript 5.7** with strict mode
+- **PWA** (Progressive Web App) configured
+- **Signals** for reactive state management
+- **Lazy Loading** for optimization
+- **Reactive Forms** with validation
 
 ## 📋 Descripción del Negocio
 
@@ -10,196 +20,162 @@ PAK TRASLADOS es un sistema para la gestión integral de:
 - **Facturación**: Por kilómetro recorrido con valores diferenciados:
   - Con Dependencia: $833.79/km
   - Sin Dependencia: $617.62/km
-- **Personal**: 5 choferes (RUBEN, MARCOS, DAMIAN, LUIS, LEO)
 
-## 🚀 Estructura del Proyecto
+## 🏗️ Estructura del Proyecto
 
 ```
-/
-├── index.html              # Dashboard principal
-├── css/
-│   └── styles.css         # Sistema de diseño completo
-├── js/
-│   └── app.js             # Interactividad básica
-└── pages/
-    ├── cartera.html       # Gestión de pacientes
-    ├── horarios.html      # Planificación semanal
-    ├── facturacion.html   # Facturación y AFIP
-    ├── cobranza.html      # Gestión de cobranzas
-    ├── presupuesto.html   # Control financiero
-    └── reportes.html      # Reportes y estadísticas
+src/
+├── app/
+│   ├── core/              # Servicios singleton, guards, interceptors
+│   │   └── models/        # Interfaces TypeScript
+│   ├── shared/            # Componentes, pipes, directivas compartidas
+│   ├── features/          # Módulos de funcionalidad
+│   │   ├── dashboard/     # Dashboard principal
+│   │   ├── cartera/       # Gestión de pacientes (CRUD completo)
+│   │   ├── horarios/      # Planificación de horarios (placeholder)
+│   │   ├── facturacion/   # Facturación (placeholder)
+│   │   ├── cobranza/      # Cobranza (placeholder)
+│   │   └── presupuesto/   # Presupuesto (placeholder)
+│   └── layout/            # Header, sidebar
+├── assets/                # Recursos estáticos
+└── environments/          # Configuración por ambiente
 ```
 
-## 📄 Páginas Implementadas
+## 🔧 Instalación
 
-### 1. Dashboard (index.html)
-- **Métricas principales**: Pacientes activos, facturación mensual, cobranzas pendientes, km recorridos
-- **Distribución por Obra Social**: Tabla con porcentajes y montos
-- **Accesos rápidos**: Botones de navegación a módulos principales
-- **Actividad reciente**: Timeline de últimas acciones
-- **Top 10 pacientes**: Ranking por liquidación mensual
+### Prerequisitos
 
-### 2. Cartera de Pacientes (cartera.html)
-- **Tabla completa**: N°, Apellido/Nombre, DNI, Obra Social, Teléfono, Domicilio, Km/día, Dependencia, Monto
-- **Filtros**: Búsqueda, Obra Social, Dependencia, Estado
-- **Datos reales**: 15 pacientes con información completa
-- **Estadísticas**: Totales de pacientes, km, facturación estimada
+- Node.js 20+
+- npm 10+
 
-### 3. Horarios (horarios.html)
-- **Vista semanal**: Lunes a Viernes
-- **5 columnas por chofer**: RUBEN, MARCOS, DAMIAN, LUIS, LEO
-- **Franjas horarias**: 7:00 a 20:00
-- **Cards de traslados**: Paciente, hora, destino y ubicación
-- **Resumen por chofer**: Estadísticas de carga de trabajo
+### Pasos
 
-### 4. Facturación (facturacion.html)
-- **Lista de facturas**: N°, CUIT, Obra Social, Fecha, Importe, CAE, Estado
-- **Datos reales**: Facturas 0004-00001761 hasta 0004-00001770
-- **Estados**: Emitida, Pendiente AFIP
-- **Resumen por OS**: Distribución de facturación
-- **Total facturado**: $1.845.320,19
-
-### 5. Cobranza (cobranza.html)
-- **Estado de pagos**: Factura, Pagado, Saldo, Fecha pago, Recibo
-- **Comisiones 3%**: Cálculo automático sobre cobros
-- **Estados**: Pagado, Pendiente, Pago Parcial, Vencido
-- **Alertas**: Facturas vencidas con más de 60 días
-- **Resumen por OS**: Tasa de cobro por obra social
-
-### 6. Presupuesto (presupuesto.html)
-- **Ingresos vs Egresos**: Balance mensual
-- **Detalle de movimientos**: Fecha, Concepto, Categoría, Montos
-- **Distribución de gastos**: Por categoría (Sueldos 88%, Seguros, Combustible, etc.)
-- **Evolución mensual**: Comparativa histórica
-- **Resultado**: Margen del 46%
-
-### 7. Reportes (reportes.html)
-- **6 tipos de reportes**: Liquidación, Obra Social, Choferes, Cobranzas, Balance, Kilómetros
-- **Estadísticas del período**: 8 indicadores clave
-- **Top rankings**: Obras sociales y pacientes
-- **Alertas y recomendaciones**: Sistema de avisos inteligente
-
-## 🎨 Sistema de Diseño
-
-### Colores
-- **Primary**: #2563eb (Azul)
-- **Secondary**: #10b981 (Verde)
-- **Warning**: #f59e0b (Amarillo)
-- **Danger**: #ef4444 (Rojo)
-- **Sidebar**: #1e293b (Oscuro)
-
-### Tipografía
-- **Fuente**: Inter (Google Fonts)
-- Tamaños: 0.75rem - 2rem
-- Pesos: 400 (Regular), 500 (Medium), 600 (Semibold), 700 (Bold)
-
-### Componentes
-- Cards con sombras sutiles
-- Badges de estado con colores semánticos
-- Tablas con hover interactivo
-- Botones con estados (primary, secondary, success)
-- Filtros y formularios estilizados
-- Navegación lateral fija
-
-## 📊 Datos de Ejemplo Incluidos
-
-### Pacientes (15 registrados)
-- ALANIS TOMAS SEBASTIAN (DNI 55284684, OSMATA)
-- CONSALVO ANTONINI ABEL (DNI 47352009, OSECAC)
-- RODRIGUEZ MARIA SOL, MARTINEZ JUAN PABLO, FERNANDEZ LUCAS GABRIEL, etc.
-
-### Facturas (10 facturas)
-- Rango: 0004-00001761 a 0004-00001770
-- Monto total: $1.845.320,19
-- Con CAE de AFIP y fechas de vencimiento
-
-### Choferes (5 activos)
-- RUBEN: 8 pacientes, 24 viajes/día, 156 km/día
-- MARCOS: 9 pacientes, 27 viajes/día, 178 km/día
-- DAMIAN: 10 pacientes, 30 viajes/día, 195 km/día
-- LUIS: 8 pacientes, 24 viajes/día, 145 km/día
-- LEO: 7 pacientes, 21 viajes/día, 110 km/día
-
-## 🔧 Características Técnicas
-
-- ✅ HTML5 semántico
-- ✅ CSS3 moderno con variables CSS
-- ✅ JavaScript vanilla (sin dependencias)
-- ✅ Responsive design (Desktop first)
-- ✅ Navegación funcional entre páginas
-- ✅ Font Awesome para iconos (CDN)
-- ✅ Google Fonts (Inter)
-- ✅ Filtros de tabla interactivos
-- ✅ Sin frameworks externos
-
-## 🌐 Cómo Visualizar
-
-### Opción 1: Servidor Local (Recomendado)
-
+1. Clonar el repositorio:
 ```bash
-cd /home/runner/work/PAKCopilot/PAKCopilot
-python3 -m http.server 8080
+git clone https://github.com/damianfb/PAKCopilot.git
+cd PAKCopilot
 ```
 
-Luego abrir: `http://localhost:8080/index.html`
-
-### Opción 2: Directamente en el Navegador
-
-Abrir cualquier archivo HTML directamente. La navegación entre páginas funcionará correctamente.
-
-## 📱 Diseño Responsive
-
-El prototipo se adapta a diferentes tamaños de pantalla:
-
-- **Desktop**: ≥1024px (diseño completo con sidebar fijo)
-- **Tablet**: 768px - 1024px (ajustes de layout)
-- **Mobile**: <768px (sidebar responsive, tablas con scroll horizontal)
-
-## 🎯 Reglas de Negocio Implementadas
-
-### Cálculo de Liquidación
-```
-Monto = Km/día × Días asistidos × Valor KM
-
-Valores por kilómetro:
-- Sin Dependencia: $617.62
-- Con Dependencia: $833.79
+2. Instalar dependencias:
+```bash
+npm install
 ```
 
-### Comisiones
-- 3% sobre el monto cobrado
-- Aplicado a cada pago recibido
+3. Ejecutar en modo desarrollo:
+```bash
+npm start
+```
 
-### Estados de Facturas
-- **Emitida**: Con CAE de AFIP
-- **Pendiente AFIP**: Requiere obtener CAE
-- **Anulada**: Factura cancelada
+La aplicación estará disponible en `http://localhost:4200`
 
-### Estados de Cobranza
-- **Pagado**: Cobro completo
-- **Pendiente**: Sin pago recibido
-- **Pago Parcial**: Cobro parcial del monto
-- **Vencido**: Más de 60 días sin cobrar
+## 📦 Scripts disponibles
 
-## 🔮 Próximos Pasos
+- `npm start` - Ejecuta el servidor de desarrollo
+- `npm run build` - Compila la aplicación para producción
+- `npm run watch` - Compila en modo watch
+- `npm run format` - Formatea el código con Prettier
+- `npm test` - Ejecuta los tests
 
-Este prototipo servirá como base para:
+## 📱 Módulos Implementados
 
-1. **Validación con stakeholders** del modelo de datos y UX
-2. **Refinamiento** de casos de uso y flujos
-3. **Desarrollo de backend** con base de datos
-4. **Implementación de APIs** REST
-5. **Integración con AFIP** para facturación electrónica
-6. **Sistema de autenticación** y permisos
-7. **Reportes exportables** (PDF, Excel)
+### ✅ Módulo de Cartera (Completo - Bloque 1)
 
-## 📝 Notas Técnicas
+El módulo de **Cartera de Pacientes** está completamente implementado con:
 
-- No requiere instalación de dependencias
-- Compatible con navegadores modernos (Chrome, Firefox, Safari, Edge)
-- Código limpio y bien comentado
-- Fácil de modificar y extender
-- Preparado para conversión a aplicación real
+#### Componentes:
+1. **CarteraListComponent**: 
+   - Tabla con datos de pacientes
+   - Filtros por: búsqueda libre, obra social, dependencia
+   - Paginación configurable
+   - Estadísticas en tiempo real
+
+2. **CarteraFormComponent**:
+   - Formulario reactivo con validaciones
+   - Crear nuevo paciente
+   - Editar paciente existente
+   - Validaciones de campos requeridos
+
+3. **CarteraDetailComponent**:
+   - Vista detallada de paciente
+   - Información personal, obra social, domicilios
+   - Servicios de traslado asociados
+
+#### Características técnicas:
+- ✅ Uso de **Signals** para estado reactivo (Angular 17+)
+- ✅ **Computed signals** para filtros y paginación
+- ✅ **Reactive Forms** con validaciones
+- ✅ Servicio con métodos CRUD (mock data)
+- ✅ Lazy loading del módulo
+- ✅ Interfaces tipadas para todos los modelos
+- ✅ Comentarios JSDoc en servicios públicos
+- ✅ Principio de Single Responsibility
+
+#### Modelos de datos:
+```typescript
+interface Paciente {
+  id: number;
+  apellidos: string;
+  nombres: string;
+  dni: number;
+  obraSocial: ObraSocial;
+  telefono: string;
+  responsable: string;
+  domicilioParticular: string;
+  dependencia: 'C/DEPEN' | 'S/DEPEN';
+  servicios: ServicioTraslado[];
+}
+```
+
+#### Mock Data incluido:
+- 5 pacientes de ejemplo con datos completos
+- 9 obras sociales configuradas
+- Servicios de traslado con cálculos de montos
+
+### 🔲 Módulos Pendientes (Bloques futuros)
+
+Los siguientes módulos están creados como placeholders y serán implementados en bloques futuros:
+
+- **Horarios**: Planificación de viajes por chofer y día
+- **Facturación**: Gestión de facturas y liquidaciones
+- **Cobranza**: Seguimiento de pagos y recibos
+- **Presupuesto**: Control de ingresos y egresos
+
+## 🎨 Layout y Navegación
+
+- ✅ **Sidebar** con navegación a todos los módulos
+- ✅ **Header** con logo y acciones de usuario
+- ✅ Diseño **responsive** (mobile-first)
+- ✅ Angular Material components
+- ✅ Sistema de colores personalizado
+
+## 🔐 PWA (Progressive Web App)
+
+La aplicación está configurada como PWA:
+- Service Worker configurado
+- Manifest con iconos (placeholder)
+- Cacheo de assets
+- Funciona offline (después de primera carga)
+
+## 🧪 Calidad de Código
+
+- TypeScript con modo `strict`
+- Prettier configurado para formateo consistente
+- Estructura modular y escalable
+- Código limpio y documentado
+
+## 📚 Próximos Pasos (Bloques futuros)
+
+1. **Bloque 2**: Implementar módulo de Horarios
+2. **Bloque 3**: Implementar módulo de Facturación
+3. **Bloque 4**: Implementar módulos de Cobranza y Presupuesto
+4. **Backend**: API REST con base de datos
+5. **Autenticación**: Sistema de login y permisos
+6. **Integración AFIP**: Facturación electrónica
+7. **Reportes**: Exportación a PDF/Excel
+
+## 🗂️ Prototipo HTML
+
+El prototipo HTML estático original se encuentra en la carpeta `prototype-backup/` como referencia.
 
 ## 👥 Autor
 
@@ -207,6 +183,8 @@ Desarrollado para **PAK TRASLADOS** - Sistema de gestión de traslados de pacien
 
 ---
 
-**Versión**: 2.0 - Prototipo Completo  
+**Versión**: 1.0.0 - Bloque 1 (Módulo Cartera)  
 **Fecha**: Enero 2025  
-**Tecnologías**: HTML5, CSS3, JavaScript ES6
+**Framework**: Angular 19+ (latest patched version) with standalone components  
+**Security**: All known Angular vulnerabilities patched (XSRF, XSS)
+

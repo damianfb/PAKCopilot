@@ -1,0 +1,135 @@
+<mat-card class="cartera-container">
+  <mat-card-header>
+    <mat-card-title>Cartera de Pacientes</mat-card-title>
+    <mat-card-subtitle>Gestión de pacientes y beneficiarios</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!-- Filters Section -->
+    <div class="filters-section">
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Buscar paciente</mat-label>
+        <input matInput 
+               [value]="searchTerm()" 
+               (input)="onSearchChange($any($event.target).value)" 
+               placeholder="Apellido, nombre o DNI">
+        <mat-icon matPrefix>search</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Obra Social</mat-label>
+        <mat-select [value]="selectedObraSocial()" (selectionChange)="onObraSocialChange($event.value)">
+          <mat-option value="">Todas</mat-option>
+          <mat-option *ngFor="let os of obrasSociales" [value]="os">
+            {{ os }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Dependencia</mat-label>
+        <mat-select [value]="selectedDependencia()" (selectionChange)="onDependenciaChange($event.value)">
+          <mat-option value="">Todas</mat-option>
+          <mat-option value="C/DEPEN">Con Dependencia</mat-option>
+          <mat-option value="S/DEPEN">Sin Dependencia</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button (click)="clearFilters()">
+        <mat-icon>clear</mat-icon>
+        Limpiar filtros
+      </button>
+
+      <button mat-raised-button color="primary" routerLink="/cartera/nuevo">
+        <mat-icon>add</mat-icon>
+        Nuevo Paciente
+      </button>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <div class="stat-item">
+        <span class="stat-label">Total Pacientes</span>
+        <span class="stat-value">{{ totalPacientes() }}</span>
+      </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="table-container">
+      <table mat-table [dataSource]="paginatedPacientes()" class="pacientes-table">
+        
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>N°</th>
+          <td mat-cell *matCellDef="let paciente">{{ paciente.id }}</td>
+        </ng-container>
+
+        <!-- Apellidos Column -->
+        <ng-container matColumnDef="apellidos">
+          <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+          <td mat-cell *matCellDef="let paciente">{{ paciente.apellidos }}</td>
+        </ng-container>
+
+        <!-- Nombres Column -->
+        <ng-container matColumnDef="nombres">
+          <th mat-header-cell *matHeaderCellDef>Nombres</th>
+          <td mat-cell *matCellDef="let paciente">{{ paciente.nombres }}</td>
+        </ng-container>
+
+        <!-- DNI Column -->
+        <ng-container matColumnDef="dni">
+          <th mat-header-cell *matHeaderCellDef>DNI</th>
+          <td mat-cell *matCellDef="let paciente">{{ paciente.dni }}</td>
+        </ng-container>
+
+        <!-- Obra Social Column -->
+        <ng-container matColumnDef="obraSocial">
+          <th mat-header-cell *matHeaderCellDef>Obra Social</th>
+          <td mat-cell *matCellDef="let paciente">{{ paciente.obraSocial.nombre }}</td>
+        </ng-container>
+
+        <!-- Telefono Column -->
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+          <td mat-cell *matCellDef="let paciente">{{ paciente.telefono }}</td>
+        </ng-container>
+
+        <!-- Dependencia Column -->
+        <ng-container matColumnDef="dependencia">
+          <th mat-header-cell *matHeaderCellDef>Dependencia</th>
+          <td mat-cell *matCellDef="let paciente">
+            <mat-chip [class]="paciente.dependencia === 'C/DEPEN' ? 'chip-warning' : 'chip-info'">
+              {{ paciente.dependencia }}
+            </mat-chip>
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let paciente">
+            <button mat-icon-button [routerLink]="['/cartera', paciente.id]">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button [routerLink]="['/cartera', paciente.id, 'editar']">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <mat-paginator 
+      [length]="totalPacientes()"
+      [pageSize]="pageSize()"
+      [pageIndex]="pageIndex()"
+      [pageSizeOptions]="[5, 10, 25, 50]"
+      (page)="onPageChange($event)"
+      showFirstLastButtons>
+    </mat-paginator>
+  </mat-card-content>
+</mat-card>
